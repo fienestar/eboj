@@ -11,6 +11,7 @@
         "https://www.acmicpc.net/*"
       ],
       "js": [
+        "change-like-box.js",
         "show-tier-button.js",
         "eboj.js"
       ]
