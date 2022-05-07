@@ -5,4 +5,15 @@
   "version": "0.0.1",
   "manifest_version": 3,
   "description": "백준에 몇가지 기능을 추가합니다.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.acmicpc.net/*"
+      ],
+      "js": [
+        "show-tier-button.js",
+        "eboj.js"
+      ]
+    }
+  ]
 }
