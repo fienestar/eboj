@@ -19,7 +19,7 @@ async function show_tier_button() {
 
     if (problem_matched && (solvedac_tier.length === 0 || solvedac_tier[0].src.endsWith('relative-0.svg'))) {
         const problem_number = problem_matched[1];
-        const button = append_new_problem_label('티어 보기', 'mediumpurple')
+        const button = append_new_problem_label('티어 보기', '#9370DB')
         let status = 0;
         button.addEventListener('click', async () => {
             const solvedac_tier = document.getElementsByClassName('solvedac-tier');
