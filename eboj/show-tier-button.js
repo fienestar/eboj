@@ -9,8 +9,8 @@ function append_new_problem_label(text, color) {
 }
 
 async function tier_of(id) {
-    const info = await fetch("https://solved.ac/api/v3/problem/show?problemId=" + id).then(v => v.json())
-    return info.level
+    const info = await fetch("https://solved.ac/api/v3/problem/show?problemId=" + encodeURIComponent(id)).then(v => v.json())
+    return parseInt(info.level)
 }
 
 async function show_tier_button() {
@@ -18,7 +18,7 @@ async function show_tier_button() {
     const solvedac_tier = document.getElementsByClassName('solvedac-tier');
 
     if (problem_matched && (solvedac_tier.length === 0 || solvedac_tier[0].src.endsWith('relative-0.svg'))) {
-        const problem_number = problem_matched[1];
+        const problem_number = parseInt(problem_matched[1]);
         const button = append_new_problem_label('티어 보기', '#9370DB')
         let status = 0;
         button.addEventListener('click', async () => {
@@ -41,10 +41,13 @@ async function show_tier_button() {
             if (solvedac_tier.length) {
                 const split = solvedac_tier[0].src.split('/')
                 split.pop();
-                solvedac_tier[0].src = split.join('/') + `/${tier}.svg`
+                solvedac_tier[0].src = split.join('/') + `/${encodeURIComponent(tier)}.svg`
             } else {
                 const problem_title = document.querySelectorAll(`a[href="\/problem\/${problem_number}"]`)[0]
-                problem_title.innerHTML = `<img src="https://d2gd6pc034wcta.cloudfront.net/tier/${tier}.svg" class="solvedac-tier">&nbsp;` + problem_title.innerHTML;
+                const img = document.createElement('img')
+                img.src = `https://d2gd6pc034wcta.cloudfront.net/tier/${encodeURIComponent(tier)}.svg`
+                img.className = "solvedac-tier"
+                problem_title.prepend(img, " ")
             }
         })
     }
