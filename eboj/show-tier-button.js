@@ -9,8 +9,8 @@ function append_new_problem_label(text, color) {
 }
 
 async function tier_of(id) {
-    const info = await fetch("https://solved.ac/api/v3/problem/show?problemId=" + encodeURIComponent(id)).then(v => v.json())
-    return parseInt(info.level)
+    const res = await chrome.runtime.sendMessage({type: "get-tier", id: id});
+    return parseInt(res.data.level);
 }
 
 async function show_tier_button() {
