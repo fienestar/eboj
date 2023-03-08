@@ -35,19 +35,24 @@ async function show_tier_button() {
             if (status == 1) return;
             status = 1;
             button.innerText = '티어 가져오는중...'
-            const tier = await tier_of(problem_number);
-            button.innerText = '티어 가리기'
-            status = 0;
-            if (solvedac_tier.length) {
-                const split = solvedac_tier[0].src.split('/')
-                split.pop();
-                solvedac_tier[0].src = split.join('/') + `/${encodeURIComponent(tier)}.svg`
-            } else {
-                const problem_title = document.querySelectorAll(`a[href="\/problem\/${problem_number}"]`)[0]
-                const img = document.createElement('img')
-                img.src = `https://d2gd6pc034wcta.cloudfront.net/tier/${encodeURIComponent(tier)}.svg`
-                img.className = "solvedac-tier"
-                problem_title.prepend(img, " ")
+            try{
+                const tier = await tier_of(problem_number);
+                button.innerText = '티어 가리기'
+                status = 0;
+                if (solvedac_tier.length) {
+                    const split = solvedac_tier[0].src.split('/')
+                    split.pop();
+                    solvedac_tier[0].src = split.join('/') + `/${encodeURIComponent(tier)}.svg`
+                } else {
+                    const problem_title = document.querySelectorAll(`a[href="\/problem\/${problem_number}"]`)[0]
+                    const img = document.createElement('img')
+                    img.src = `https://d2gd6pc034wcta.cloudfront.net/tier/${encodeURIComponent(tier)}.svg`
+                    img.className = "solvedac-tier"
+                    problem_title.prepend(img, " ")
+                }
+            }catch(e){
+                button.innerText = '티어 보기 실패'
+                status = 0;
             }
         })
     }
