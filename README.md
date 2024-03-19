@@ -12,4 +12,7 @@
 좋아요 아이콘을 눌러 기존 좋아요 기능을 사용할 수 있습니다.
 기존 좋아요 버튼은 삭제되며, 좋아요를 표시한 경우 파란색으로 하이라이트됩니다.
 
+- 마지막으로 선택한 언어 기억
+제출시 언어 기억하기 버튼을 활성화하면 새로고침해도 마지막으로 선택한 언어를 사용합니다.
+
 [Download](https://chrome.google.com/webstore/detail/eboj/mdpfccapkfblhlebidielogcjmlbhikc)

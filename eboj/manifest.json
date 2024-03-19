@@ -2,7 +2,7 @@
   "update_url": "https://clients2.google.com/service/update2/crx",
   "name": "eboj",
   "short_name": "eboj",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "manifest_version": 3,
   "host_permissions": [
     "https://solved.ac/api/v3/problem/show"
