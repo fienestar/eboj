@@ -16,6 +16,14 @@
     "service_worker": "background.js"
   },
   "description": "백준에 몇가지 기능을 추가합니다.",
+  "web_accessible_resources": [{
+    "resources": [
+      "set-smart-default-language.js"
+    ],
+    "matches": [
+      "https://www.acmicpc.net/*"
+    ]
+  }],
   "content_scripts": [
     {
       "matches": [
